@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="Styles/IndexStyle.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="main-container">
+
+        <div id="game-view">
+
+            <div id="right-click-menu">
+                <button onclick="Creator.makeActor()">Create Actor</button>
+            </div>
+
+            <div id="object-view" class="floatWindow">
+                <h4>Object</h4>
+                <input id="object-name" onchange="Ui.updateActor(this)" type="text"/>
+                <br />
+                <h5>Meshes</h5>
+
+                    <input type="file" id="files" name="file" multiple>
+                    <br />
+                    <button onclick="Loader.loadMesh()">Load</button>
+                <div id="mesh-view">
+
+                </div>
+            </div>
+
+            <div id="scene-view" class="floatWindow">
+
+            </div>
+
+        </div>
+
+        <div id="connection-view">
+
+        </div>
+
+    </div>
+
+    <!--3d party-->
+
+    <script src="scripts/three.js"></script>
+    <script src="scripts/Projector.js"></script>
+    <script src="scripts/OrbitControls.js"></script>
+    <script src="scripts/CSS3DRenderer.js"></script>
+    <script src="scripts/OBJLoader.js"></script>
+
+    <!--Main app files-->
+
+    <script src="scripts/App/Global.js"></script>
+    <script src="scripts/App/Renderer.js"></script>
+    <script src="scripts/App/Ui.js"></script>
+    <script src="scripts/App/Listeners.js"></script>
+    <script src="scripts/App/Creator.js"></script>
+    <script src="scripts/App/Loader.js"></script>
+    <script src="scripts/App/Main.js"></script>
+
+</body>
+</html>
