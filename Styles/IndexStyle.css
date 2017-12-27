@@ -22,6 +22,7 @@ input[type="text"]
 {
     position:absolute;
 
+    margin:auto;
     width:200px;
     height:400px;
 
@@ -29,7 +30,40 @@ input[type="text"]
     text-align:center;
 }
 
-#right-click-menu
+.drag
+{
+    height:24px;
+    background-color:yellow;
+}
+
+#property-container, #propertyTarget-container
+{
+    display:block;
+    background-color:white;
+
+    position:absolute;
+
+    margin:auto;
+    width:200px;
+    height:200px;
+
+    text-align:center;
+}
+
+.property
+{
+    background-color:white;
+
+    position:absolute;
+
+    margin:auto;
+    width:200px;
+    height:100px;
+
+    text-align:center;
+}
+
+.right-click-menu
 {
     display:none;
 
@@ -40,6 +74,11 @@ input[type="text"]
     position:absolute;
     left:50%;
     top:50%;
+}
+
+#right-click-menu
+{
+    
 }
 
 #main-container
@@ -72,5 +111,6 @@ input[type="text"]
 {
     display:block;
     height:50%;
+    width:100%;
     background-color:green;
 }

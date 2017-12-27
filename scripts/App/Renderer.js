@@ -28,7 +28,7 @@
 
             Global.renderer.setSize(Global.width, Global.height);
 
-
+            Global.renderer.domElement.id = "canvas";
             Global.GameDiv.appendChild(Global.renderer.domElement);
 
         }

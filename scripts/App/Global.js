@@ -4,6 +4,9 @@
 
     var Target = undefined;
     var GameDiv = document.getElementById("game-view");
+    var ConnectDiv = document.getElementById("connection-view");
+    var MainDiv = document.getElementById("main-container");
+
     var currentName = document.getElementById("object-name");
     var width;
     var height;
@@ -31,7 +34,7 @@
         if (this.Target) {
 
             //this.scene.add(mesh);
-            this.Target.add(mesh);
+            this.Target.children.push(mesh);
             this.scene.add(mesh);
             debugger;
             Ui.addMeshToList(mesh);
@@ -81,7 +84,9 @@
         setTarget: setTarget,
         addMesh: addMesh,
         addActor: addActor,
-        RayFromCamera: RayFromCamera
+        RayFromCamera: RayFromCamera,
+        MainDiv: MainDiv,
+        ConnectDiv: ConnectDiv,
     }
 
 

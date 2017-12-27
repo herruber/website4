@@ -4,6 +4,8 @@
     <title></title>
 	<meta charset="utf-8" />
     <link href="Styles/IndexStyle.css" rel="stylesheet" />
+
+
 </head>
 <body>
 
@@ -11,11 +13,18 @@
 
         <div id="game-view">
 
-            <div id="right-click-menu">
+            <div id="right-click-menu" class="right-click-menu">
                 <button onclick="Creator.makeActor()">Create Actor</button>
             </div>
 
-            <div id="object-view" class="floatWindow">
+            <div id="property-menu" class="right-click-menu">
+                <button onclick="Ui.addProperty()">Add property</button>
+            </div>
+
+            <div id="object-view" class="floatWindow" >
+                <div class="drag">
+
+                </div>
                 <h4>Object</h4>
                 <input id="object-name" onchange="Ui.updateActor(this)" type="text"/>
                 <br />
@@ -30,13 +39,18 @@
             </div>
 
             <div id="scene-view" class="floatWindow">
+                <div class="drag">
 
+                </div>
             </div>
 
         </div>
 
-        <div id="connection-view">
-
+        <div id="connection-view" bajs-include-html="Html/Property.html">
+            <div id="property-view" class="floatWindow">
+                
+                <button >Add</button>
+            </div>
         </div>
 
     </div>

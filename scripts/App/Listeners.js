@@ -11,36 +11,47 @@ var Listeners = (function()
 
     var setDrag = function (event) {
 
-        dContent = event.target;
+        dContent = event.target.parentElement;
         drag = true;
         var area = dContent.getBoundingClientRect();
+        var Gameview = Global.GameDiv.getBoundingClientRect();
+
+        
 
         xdelta = event.clientX - area.x;
         ydelta = event.clientY - area.y;
+
         Global.controls.enabled = false;
     };
 
     var onMouseDown = function (event) {
-        //event.preventDefault();
+        event.preventDefault();
         var id = event.target.id;
-
-
-
-            switch (id) {
-                case "scene-view":
-                    setDrag(event);
-                    break;
-                case "object-view":
-                    setDrag(event);
-                    break;
-                default:
-                    if (event.button == 2) {
-
-                        Ui.toggleRightMenu(event);
-                    }
-
-                    break;
+        var targetclass = event.target.classList.contains("drag");
+            
+        var area = event.target.getBoundingClientRect();
+        console.log(id)
+        //IF rightclick for rightclick menu
+        if (event.button == 2) {
+            
+            if (id == "connection-view") {
+                Ui.togglePropertyMenu(event);
             }
+            else if(id == "canvas") {
+                Ui.toggleRightMenu(event);
+            }
+        }
+
+            //IF left click on draggable window
+        else if (event.button == 0){
+            
+            if (targetclass) {
+                setDrag(event);
+            }         
+        }
+
+
+            
         
 
             event.target.focus();
@@ -75,18 +86,24 @@ var Listeners = (function()
 
         if (drag) {
             //debugger;
-            dContent.style.left = event.clientX - xdelta + 'px';
-            dContent.style.top = event.clientY - ydelta + 'px';
+
+            dContent.style.left = event.pageX - xdelta + 'px';
+            dContent.style.top = event.pageY - ydelta + 'px';
+
             console.log(event.clientY + " " + ydelta + 'px');
         }
     };
 
     var initListeners = function() {
 
-        Global.GameDiv.addEventListener('mousedown', this.onMouseDown, false);
+        debugger;
+        Global.MainDiv.addEventListener('mousedown', this.onMouseDown, false);
         window.addEventListener('resize', this.onResize, false);
-        Global.GameDiv.addEventListener('mouseup', this.onMouseUp, false);
-        Global.GameDiv.addEventListener('mousemove', this.onMouseMove, false);
+        Global.MainDiv.addEventListener('mouseup', this.onMouseUp, false);
+        Global.MainDiv.addEventListener('mousemove', this.onMouseMove, false);
+
+        //Global.ConnectDiv.addEventListener('mousedown', this.onMouseDown, false);.addEventListener('mousedown', this.onMouseDown, false);
+
     }
 
     return {
