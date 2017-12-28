@@ -18,16 +18,20 @@ input[type="text"]
     cursor:pointer;
 }
 
-.floatWindow
-{
+#line {
+    height:8px;
+    width: 100px;
     position:absolute;
+    background-color:black;
+}
 
-    margin:auto;
-    width:200px;
-    height:400px;
-
-    background-color:red;
-    text-align:center;
+.floatWindow {
+    position: absolute;
+    margin: auto;
+    width: 200px;
+    height: 400px;
+    background-color: red;
+    text-align: center;
 }
 
 .drag

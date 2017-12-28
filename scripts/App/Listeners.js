@@ -50,10 +50,6 @@ var Listeners = (function()
             }         
         }
 
-
-            
-        
-
             event.target.focus();
         
 
@@ -96,7 +92,7 @@ var Listeners = (function()
 
     var initListeners = function() {
 
-        debugger;
+
         Global.MainDiv.addEventListener('mousedown', this.onMouseDown, false);
         window.addEventListener('resize', this.onResize, false);
         Global.MainDiv.addEventListener('mouseup', this.onMouseUp, false);

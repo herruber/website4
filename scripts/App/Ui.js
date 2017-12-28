@@ -46,7 +46,6 @@
         divtar.style.top = pMenu.style.top;
 
 
-        debugger;
         propview.appendChild(div);
         propview.appendChild(divtar);
 
@@ -153,6 +152,7 @@
         togglePropertyMenu: togglePropertyMenu,
         addProperty: addProperty,
         loadHtml: loadHtml,
+        updateSvgArrow: updateSvgArrow,
 
 
     }

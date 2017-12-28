@@ -3,18 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite4", "C:\Users\elev\Source\Websites\website42\", "{BECE07ED-265F-458D-A1C2-A874FE6637C1}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite4", "WebSite4", "{BECE07ED-265F-458D-A1C2-A874FE6637C1}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_51204"
-		Debug.AspNetCompiler.PhysicalPath = "C:\Users\elev\Source\Websites\website42\"
+		Debug.AspNetCompiler.PhysicalPath = "WebSite4"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51204\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_51204"
-		Release.AspNetCompiler.PhysicalPath = "C:\Users\elev\Source\Websites\website42\"
+		Release.AspNetCompiler.PhysicalPath = "WebSite4"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51204\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"

@@ -10,7 +10,9 @@
     var currentName = document.getElementById("object-name");
     var width;
     var height;
+
     var scene = new THREE.Scene();
+    var sceneCss = new THREE.Scene();
 
     //Scene variables
     var createdActors = [];
@@ -20,6 +22,7 @@
     var camera;
     var controls;
     var renderer = new THREE.WebGLRenderer();
+    var rendererCss = new THREE.CSS3DRenderer();
 
     var setTarget = function (value) {
         this.Target = createdActors[value];
@@ -87,6 +90,8 @@
         RayFromCamera: RayFromCamera,
         MainDiv: MainDiv,
         ConnectDiv: ConnectDiv,
+        rendererCss: rendererCss,
+        sceneCss: sceneCss
     }
 
 
