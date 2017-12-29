@@ -1,11 +1,14 @@
 ﻿html
 {
-    height:200%;
+    height:100%;
+    width:100%;
 }
 
 body {
     height:100%;
+    width:100%;
     font-family:Arial, Helvetica, sans-serif;
+    overflow-y:hidden;
 }
 
 input[type="text"]
@@ -38,6 +41,20 @@ input[type="text"]
 {
     height:24px;
     background-color:yellow;
+}
+
+.property-container
+{
+    display:block;
+    background-color:white;
+
+    position:absolute;
+
+    margin:auto;
+    width:200px;
+    height:200px;
+
+    text-align:center;
 }
 
 #property-container, #propertyTarget-container
@@ -88,33 +105,32 @@ input[type="text"]
 #main-container
 {
     height:100%;
+    width:100%;
+display:flex;
 }
 
 #object-view
 {
-    top:50%;
-    left:20px;
+
 }
 
 #scene-view
 {
-    top:20px;
-    left:20px;
+    
 }
 
 #game-view
 {
-    display:block;
-    height:50%;
+    display:inline-block;
+    height:100%;
+    width:80%;
     background-color:red;
-    
-    pointer-events:fill;
 }
 
 #connection-view
 {
-    display:block;
-    height:50%;
-    width:100%;
+    padding-left:12px;
+    display:inline-block;
+    height:100%;
     background-color:green;
 }

@@ -1,0 +1,23 @@
+﻿    <div class="drag">
+
+    </div>
+    Input name:
+    <br />
+    <input id="property-name" type="text" />
+    <br />
+    Type: <select id="property-select">
+        <option value="slider">Slider</option>
+        <option value="number">Number</option>
+    </select>
+<br />
+
+Connect To: <select id="target-select" onchange="Ui.updateTargets(this)" >
+    <option value="scale-x">scale x</option>
+    <option value="scale-y">scale y</option>
+    <option value="scale-z">scale z</option>
+
+    <option value="move-x">move x</option>
+    <option value="move-y">move y</option>
+    <option value="move-z">move z</option>
+
+</select>

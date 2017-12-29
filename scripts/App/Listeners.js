@@ -25,41 +25,49 @@ var Listeners = (function()
     };
 
     var onMouseDown = function (event) {
-        event.preventDefault();
+        //event.preventDefault();
+
         var id = event.target.id;
         var targetclass = event.target.classList.contains("drag");
             
         var area = event.target.getBoundingClientRect();
         console.log(id)
+
         //IF rightclick for rightclick menu
+
         if (event.button == 2) {
-            
             if (id == "connection-view") {
                 Ui.togglePropertyMenu(event);
             }
-            else if(id == "canvas") {
+            else if (id == "canvas") {
                 Ui.toggleRightMenu(event);
             }
         }
 
-            //IF left click on draggable window
-        else if (event.button == 0){
-            
-            if (targetclass) {
-                setDrag(event);
-            }         
-        }
+        //else if (event.button == 0) {
 
-            event.target.focus();
-        
+        //    if (id != "canvas") {
+        //        Global.controls.enabled = false;
+
+        //        if (targetclass) {
+        //            setDrag(event);
+        //        }
+        //        else {
+        //            console.log(event.target)
+        //            event.target.focus();
+        //        }
+        //    }
+        //    else {
+                
+        //    }
+        //}
 
     };
 
     var onMouseUp = function(event) {
-        event.preventDefault();
-
-        drag = false;
-        Global.controls.enabled = true;
+        //event.preventDefault();
+        //drag = false;
+        //Global.controls.enabled = true;
 
     };
 
@@ -76,18 +84,18 @@ var Listeners = (function()
     };
 
     var onMouseMove = function(event) {
-        event.preventDefault();
+        //event.preventDefault();
 
         //If an object is being dragged
 
-        if (drag) {
-            //debugger;
+        //if (drag) {
+        //    //debugger;
 
-            dContent.style.left = event.pageX - xdelta + 'px';
-            dContent.style.top = event.pageY - ydelta + 'px';
+        //    dContent.style.left = event.pageX - xdelta + 'px';
+        //    dContent.style.top = event.pageY - ydelta + 'px';
 
-            console.log(event.clientY + " " + ydelta + 'px');
-        }
+        //    console.log(event.clientY + " " + ydelta + 'px');
+        //}
     };
 
     var initListeners = function() {

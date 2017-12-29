@@ -30,6 +30,7 @@
         Ui.updateMeshes();
 
         currentName.value = createdActors[value].name;
+        Ui.reloadProperties();
     }
 
     var addMesh = function (mesh) {

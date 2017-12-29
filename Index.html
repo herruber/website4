@@ -21,34 +21,44 @@
                 <button onclick="Ui.addProperty()">Add property</button>
             </div>
 
-            <div id="object-view" class="floatWindow" >
-                <div class="drag">
-
-                </div>
-                <h4>Object</h4>
-                <input id="object-name" onchange="Ui.updateActor(this)" type="text"/>
-                <br />
-                <h5>Meshes</h5>
-
-                    <input type="file" id="files" name="file" multiple>
-                    <br />
-                    <button onclick="Loader.loadMesh()">Load</button>
-                <div id="mesh-view">
-
-                </div>
-            </div>
-
-            <div id="scene-view" class="floatWindow">
-                <div class="drag">
-
-                </div>
-            </div>
-
         </div>
 
         <div id="connection-view">
+            <div id="scene-view">
+                <h4>Scene</h4>
+            </div>
+            <div id="object-view">
+                <h4>Object</h4>
+                <input id="object-name" onchange="Ui.updateActor(this)" type="text" />
+                <br />
+                <h5>Meshes</h5>
 
-            <div id="line"></div>
+                <input type="file" id="files" name="file" multiple>
+                <br />
+                <button onclick="Loader.loadMesh()">Load</button>
+            </div>
+            <div id="mesh-view">
+
+            </div>
+
+            <div id="properties">
+                <h5>Properties</h5>
+
+                <select onchange="Ui.addProperty(this)">
+                    <option value="0">--Select--</option>
+                    <option value="slider">Slider</option>
+                </select>
+
+                <div id="property-view">
+
+                </div>
+
+                <div id="target-view">
+
+
+                </div>
+
+            </div>
         </div>
 
     </div>

@@ -29,8 +29,17 @@ var Creator = (function () {
 
         actor.userData = {
             id: nr,
-            properties: []
+            
+            connections: []
         }
+
+        //var ob = {
+        //    input: undefined, //An element for example input slider
+        //    inputname: "", //The input label
+        //    dimensions: []
+        //}
+
+        //actor.userData.connections.push(ob)
 
         var ax = this.makeAxisHelper();
         var giz = this.makeGizmo();

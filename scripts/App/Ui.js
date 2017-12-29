@@ -1,56 +1,148 @@
-﻿var Ui = (function () {
+﻿    var Ui = (function () {
 
 
     var sceneView = document.getElementById("scene-view");
     var rMenu = document.getElementById("right-click-menu");
     var pMenu = document.getElementById("property-menu");
+    var preview = document.getElementById("preview-ui");
+
+    var targetview = document.getElementById("target-view");
+
+    var propertyview = document.getElementById("property-view");
+    var meshview = document.getElementById("mesh-view");
+    var objectview = document.getElementById("object-view");
+
     var reader = new FileReader();
     var rMenuVisible = false;
     var pMenuVisible = false;
 
+    var properties = -1;
+    var props = 0;
+
     //Returns the inner html
     var loadHtml = function (page) {
         var path = "Html/" + page + ".html";
-        return '<object type="text/html" data="' + path+ '"></object>';
+        return path;
     };
 
-    var addProperty = function () {
+    var requestHtml = function (name) {
+
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+
+            var ob = {
+                input: undefined, //An element for example input slider
+                inputname: "", //The input label
+                dimensions: []
+            }
+
+            Global.Target.userData.connections.push(ob)
+
+            addSlider(this.responseText);
+        }
+        xhr.open("GET", loadHtml(name));
+        xhr.responseType = "text";
+        xhr.send();
+
+    };
+
+    var reloadProperties = function () {
+
+        while (propertyview.firstChild) {
+            propertyview.removeChild(propertyview.firstChild);
+        }
+
         
-        var propview = Global.ConnectDiv;
+        for (var i = 0; i < Global.Target.userData.connections.length; i++) {
 
-        var bajs = '<div class="drag"></div>Input name: <br /> <input type="text" /> <br /> Type: <select id="property-select"><option value="slider">Slider</option><option value="number">Number</option></select>';
-        var bajs2 = '<div class="drag"></div>Target: <select id="propertyTarget-select" multiple><option value="x">x</option><option value="y">y</option><option value="z">z</option></select>';
+            if (Global.Target.userData.connections[i].input) {
+                var div = Global.Target.userData.connections[i].input;
+
+                propertyview.appendChild(div);
+            }
+            
+        }
+    };
+
+    var addSlider = function (content) {
+        
+        var div = document.createElement('div');
+        div.id = "property-" +properties;
+
+        div.innerHTML = content;
 
 
+        propertyview.appendChild(div);
+
+        for (var i = 0; i < div.children.length; i++) {
+            div.children[i].id = div.children[i].id + properties;
+        }
+
+        Global.Target.userData.connections[properties].input = div;
+
+    };
+
+    var addProperty = function (elem) {
+
+        properties++;
+
+        if (elem.value == "slider") {
+            requestHtml(elem.value);
+        }
+
+        elem.value = "0";
+
+    };
+
+    var addConnection = function (elem) {
+        debugger;
+        var type = elem.value.split("-")[0];
+        var dimension = elem.value.split("-")[1];
+        var id = elem.id.split("-")[1];
 
         var div = document.createElement('div');
-        var divtar = document.createElement('div');
-        div.id = "property-container";
-        divtar.id = "propertyTarget-container"
+        div.innerText = elem.value;
 
-        var arrow = document.createElement('div');
-        arrow.style.width = "300px";
-        arrow.style.height = "6px";
-        arrow.style.position = "absolute";
-        arrow.style.left = div.offsetLeft + 100 + "px";
-        arrow.style.top = div.pageY + 100 + "px";
+        if (dimension == "x") {
+            Global.Target.userData.connections[id].dimensions.push(new THREE.Vector3(1, 0, 0));
+        }
 
+        if (dimension == "y") {
+            Global.Target.userData.connections[id].dimensions.push(new THREE.Vector3(0, 1, 0));
+        }
 
-        div.innerHTML = bajs;
-        divtar.innerHTML = bajs2;
+        if (dimension == "z") {
+            Global.Target.userData.connections[id].dimensions.push(new THREE.Vector3(0, 0, 1));
+        }
 
-        div.style.left = pMenu.style.left;
-        div.style.top = pMenu.style.top;
+        targetview.appendChild(div);
 
-        divtar.style.left = pMenu.offsetLeft + 300 + "px";
-        divtar.style.top = pMenu.style.top;
+        
+    };
 
+    var updateTarget = function (elem) {
 
-        propview.appendChild(div);
-        propview.appendChild(divtar);
+        var id = elem.id.split("-")[2];
 
-        propview.appendChild(arrow);
+        var tar = Global.Target;
 
+        console.log(tar);
+
+        for (var m = 0; m < tar.children.length; m++) {
+
+            for (var p = 0; p < Global.Target.userData.connections[id].dimensions.length; p++) {
+
+                var dimension = Global.Target.userData.connections[id].dimensions[p];
+
+                if (dimension.x != 0) {
+                    tar.children[m].scale.set(elem.value, 1, 1);
+                }
+
+                
+            }
+        }
+
+        
     };
 
     var toggleRightMenu = function (event) {
@@ -152,9 +244,9 @@
         togglePropertyMenu: togglePropertyMenu,
         addProperty: addProperty,
         loadHtml: loadHtml,
-        updateSvgArrow: updateSvgArrow,
-
-
+        addConnection: addConnection,
+        updateTarget: updateTarget,
+        reloadProperties: reloadProperties,
     }
 
 
