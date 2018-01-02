@@ -21,6 +21,7 @@
 
     var camera;
     var controls;
+    var composer;
     var renderer = new THREE.WebGLRenderer();
     var rendererCss = new THREE.CSS3DRenderer();
 
@@ -30,6 +31,7 @@
         Ui.updateMeshes();
 
         currentName.value = createdActors[value].name;
+        console.log("current actor name = " + currentName.value)
         Ui.reloadProperties();
     }
 
@@ -40,7 +42,7 @@
             //this.scene.add(mesh);
             this.Target.children.push(mesh);
             this.scene.add(mesh);
-            debugger;
+
             Ui.addMeshToList(mesh);
             //Update meshes list
         }
@@ -55,6 +57,10 @@
         //Do after change
 
         Ui.addToActorList(id);
+
+        if (!this.Target) {
+            this.setTarget(id);
+        }
     }
 
     var RayFromCamera = function (event) {

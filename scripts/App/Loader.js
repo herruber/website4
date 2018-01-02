@@ -11,7 +11,10 @@
             object.name = name;
             var mesh = object.children[0];
             mesh.name = name;
-            mesh.material = new THREE.MeshBasicMaterial({ color: 'red' });
+            mesh.material = new THREE.MeshStandardMaterial();
+
+            mesh.castShadow = true; //default is false
+            mesh.receiveShadow = true; //default
 
             Global.addMesh(mesh);
             document.getElementById("files").value = "";

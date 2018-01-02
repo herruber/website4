@@ -89,16 +89,19 @@
         if (elem.value == "slider") {
             requestHtml(elem.value);
         }
+        else if (elem.value == "scale") {
+            requestHtml(elem.value);
+        }
 
         elem.value = "0";
 
     };
 
     var addConnection = function (elem) {
-        debugger;
+
         var type = elem.value.split("-")[0];
         var dimension = elem.value.split("-")[1];
-        var id = elem.id.split("-")[1];
+        var id = elem.id.split("-")[2];
 
         var div = document.createElement('div');
         div.innerText = elem.value;
@@ -116,26 +119,39 @@
         }
 
         targetview.appendChild(div);
+        console.log(Global.Target.userData.connections[id].dimensions);
+        };
 
-        
+    var updateProperty = function (elem) {
+        var id = elem.id.split("-")[id.length - 1];
+        alert(id)
+
     };
 
     var updateTarget = function (elem) {
 
-        var id = elem.id.split("-")[2];
-
+        console.log(elem)
+        var id = elem.id.split('-')[2];
         var tar = Global.Target;
-
-        console.log(tar);
-
+        var val = document.getElementById("property-input-value-" +id);
+        val.innerText = elem.value;
+        
         for (var m = 0; m < tar.children.length; m++) {
 
             for (var p = 0; p < Global.Target.userData.connections[id].dimensions.length; p++) {
 
                 var dimension = Global.Target.userData.connections[id].dimensions[p];
 
+                var cs = tar.children[m].scale;
+
                 if (dimension.x != 0) {
-                    tar.children[m].scale.set(elem.value, 1, 1);
+                    tar.children[m].scale.set(elem.value, cs.y, cs.z);
+                }
+                if (dimension.y != 0) {
+                    tar.children[m].scale.set(cs.x, elem.value, cs.z);
+                }
+                if (dimension.z != 0) {
+                    tar.children[m].scale.set(cs.x, cs.y, elem.value);
                 }
 
                 
@@ -185,7 +201,7 @@
         while (elem.firstChild) {
             elem.removeChild(elem.firstChild);
         }
-        debugger;
+
         for (var m = 0; m < Global.Target.children.length; m++) {
             
             this.addMeshToList(Global.Target.children[m]);
@@ -207,7 +223,7 @@
         div.id = "scene-actor-" + id;
         div.className = "ui-scene-actor";
         div.innerText = "actor" + id;
-        div.onclick = function () { Global.setTarget(id) };
+        div.onclick = function () { Global.setTarget(id)};
 
         sceneView.appendChild(div);
     };
@@ -224,6 +240,29 @@
             div.innerText = elem.value;
         }
         
+
+    };
+
+    var updateInput = function (elem) {
+        var id = elem.id.split("-")[2];
+
+        var all = elem.parentElement.children;
+
+        for (var i = 0; i < all.length; i++) {
+
+            if (all[i].id.indexOf("property-input") > -1) {
+
+                if (elem.id.indexOf("min") > -1) {
+                    all[i].min = elem.value;
+                }
+                else if (elem.id.indexOf("max") > -1) {
+                    all[i].max = elem.value;
+                }
+                else if (elem.id.indexOf("step") > -1) {
+                    all[i].step = elem.value;
+                }
+            }
+        }
 
     };
 
@@ -247,6 +286,8 @@
         addConnection: addConnection,
         updateTarget: updateTarget,
         reloadProperties: reloadProperties,
+        updateProperty: updateProperty,
+        updateInput: updateInput,
     }
 
 

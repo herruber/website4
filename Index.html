@@ -33,9 +33,8 @@
                 <br />
                 <h5>Meshes</h5>
 
-                <input type="file" id="files" name="file" multiple>
-                <br />
-                <button onclick="Loader.loadMesh()">Load</button>
+                <input type="file" id="files" name="file" multiple onchange="Loader.loadMesh()">
+
             </div>
             <div id="mesh-view">
 
@@ -46,6 +45,7 @@
 
                 <select onchange="Ui.addProperty(this)">
                     <option value="0">--Select--</option>
+                    <option value="scale">Scale</option>
                     <option value="slider">Slider</option>
                 </select>
 
@@ -70,6 +70,11 @@
     <script src="scripts/OrbitControls.js"></script>
     <script src="scripts/CSS3DRenderer.js"></script>
     <script src="scripts/OBJLoader.js"></script>
+    <script src="scripts/EffectComposer.js"></script>
+    <script src="scripts/ShaderPass.js"></script>
+    <script src="scripts/RenderPass.js"></script>
+    <script src="scripts/SepiaShader.js"></script>
+    <script src="scripts/CopyShader.js"></script>
 
     <!--Main app files-->
 

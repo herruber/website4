@@ -1,0 +1,25 @@
+﻿    Input name:
+    <br />
+    <input id="property-name-" type="text" />
+    <br />
+    <input id="property-input-" type="range" oninput="Ui.updateTarget(this)" />
+    <br />
+    Min: <input id="property-min-" type="number"  onchange="Ui.updateInput(this)"  />
+    <br />
+    Max: <input id="property-max-" type="number"  onchange="Ui.updateInput(this)" />
+    <br />
+    Step: <input id="property-step-" type="number"  onchange="Ui.updateInput(this)" />
+<hr />
+Connect To: 
+<br />
+<select id="target-select-" onchange="Ui.addConnection(this)" >
+    <option id="0">--Select--</option>
+    <option value="scale-x">scale x</option>
+    <option value="scale-y">scale y</option>
+    <option value="scale-z">scale z</option>
+
+    <option value="move-x">move x</option>
+    <option value="move-y">move y</option>
+    <option value="move-z">move z</option>
+
+</select>
